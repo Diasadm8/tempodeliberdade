@@ -20,6 +20,8 @@
 
 * { box-sizing: border-box; }
 html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px; /* os títulos não ficam escondidos atrás do menu fixo */
   margin: 0;
   padding: 0;
   background: var(--noite);
@@ -50,7 +52,8 @@ h2 em, h1 em { font-family: var(--biblia); font-weight: 400; font-style: italic;
   color: var(--mariano);
 }
 
-.secao { padding: 110px max(6vw, 20px); }
+/* cada seção tem seu próprio fundo (o do body é escuro) */
+.secao { padding: 110px max(6vw, 20px); background: var(--branco); }
 
 .botao {
   display: inline-block;
