@@ -176,6 +176,24 @@ h2 em, h1 em { font-family: var(--biblia); font-weight: 400; font-style: italic;
 .numeros strong { display: block; font-family: var(--titulo); font-size: clamp(30px, 4vw, 46px); color: var(--mariano); line-height: 1.1; }
 .numeros span { color: var(--suave); font-size: 15px; }
 
+/* ---------- SANTUÁRIO (ONDE NASCEMOS) ---------- */
+/* tons quentes do brasão: vermelho e dourado */
+.santuario { --vinho: #8f1d1d; --ouro: #c8962e; display: grid; grid-template-columns: 1.05fr 1fr; gap: 50px 7%; align-items: center; background: linear-gradient(160deg, #fff9ef, #f7ead5); }
+.santuario .rotulo { color: var(--vinho); }
+.santuario h2 em { color: var(--vinho); }
+.santuario-foto { position: relative; padding: 0 0 50px; }
+.santuario-foto figure { margin: 0; position: relative; padding: 12px 12px 0; border-radius: 22px; background: var(--branco); box-shadow: 0 30px 70px rgba(143,29,29,.2); transform: rotate(-1.6deg); transition: transform .5s; }
+.santuario-foto:hover figure { transform: rotate(0); }
+.santuario-foto figure img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
+.santuario-foto figcaption { padding: 14px 6px 16px; font-family: var(--biblia); font-style: italic; font-size: 19px; color: var(--vinho); text-align: center; }
+.santuario-brasao { position: absolute; right: -4%; bottom: 0; width: min(38%, 220px); aspect-ratio: 1; object-fit: contain; padding: 10px; border-radius: 50%; background: var(--branco); border: 3px solid var(--ouro); box-shadow: 0 18px 40px rgba(6,18,46,.25); animation: flutuar 6s ease-in-out infinite; }
+@keyframes flutuar { 50% { transform: translateY(-10px); } }
+.santuario-texto > p:not(.rotulo) { color: #5b4a3f; font-size: 18px; }
+.santuario-texto strong { color: var(--texto); }
+.santuario-linha { list-style: none; margin: 30px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.santuario-linha li { padding: 18px 20px; border-radius: 16px; background: rgba(255,255,255,.7); border-left: 4px solid var(--ouro); font-size: 15px; line-height: 1.4; color: #5b4a3f; }
+.santuario-linha span { display: block; margin-bottom: 4px; font-family: var(--titulo); font-size: 24px; color: var(--vinho); }
+
 /* ---------- COMUNIDADE TRINDADE SANTA ---------- */
 .comunidade { display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px 7%; align-items: center; background: var(--gelo); }
 .comunidade-logo img { width: 100%; max-width: 420px; margin: 0 auto; border-radius: 28px; background: var(--branco); padding: 20px; box-shadow: 0 30px 60px rgba(31,79,181,.15); }
@@ -416,7 +434,10 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10
   .secao, .sarca { padding-top: 80px; padding-bottom: 80px; }
   .inicio h1 { font-size: 8.4vw; }
   .inicio-sub { font-size: 16px; }
-  .sobre, .encontros, .comunidade, .sinais-grade { grid-template-columns: 1fr; }
+  .sobre, .encontros, .comunidade, .sinais-grade, .santuario { grid-template-columns: 1fr; }
+  .santuario-brasao { right: 2%; width: 34%; }
+  .santuario-foto figcaption { text-align: left; padding-left: 10px; font-size: 17px; } /* a data não fica atrás do brasão */
+  .santuario-linha { grid-template-columns: 1fr; }
   .comunidade-logo img { max-width: 260px; }
   .ministerios { padding-top: 80px; padding-bottom: 80px; }
   .caminho { grid-template-columns: 1fr; }
