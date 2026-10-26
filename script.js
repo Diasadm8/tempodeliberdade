@@ -52,12 +52,12 @@ const FOTOS = [
   { arquivo: 'foto22.jpg', legenda: 'Diante da Cruz da Trindade Santa' },
   { arquivo: 'foto70.jpg', legenda: 'Em oração' },
   { arquivo: 'foto23.jpg', legenda: 'Juventude no Santuário' },
-  { arquivo: 'foto47.jpg', legenda: 'Servos reunidos' },
+  { arquivo: 'foto47.jpg', legenda: 'Grupo reunido' },
   { arquivo: 'foto71.jpg', legenda: 'Momento da cruz' },
   { arquivo: 'foto24.jpg', legenda: 'Oração' },
   { arquivo: 'foto25.jpg', legenda: 'Celebração' },
   { arquivo: 'foto72.jpg', legenda: 'Pregação' },
-  { arquivo: 'foto26.jpg', legenda: 'Ministério de Música' },
+  { arquivo: 'foto26.jpg', legenda: 'Louvor' },
   { arquivo: 'foto48.jpg', legenda: 'Bem-vindos, novos servos!' },
   { arquivo: 'foto73.jpg', legenda: 'Oração em grupo' },
   { arquivo: 'foto27.jpg', legenda: 'Encontro' },
@@ -155,21 +155,6 @@ menuBotao.addEventListener('click', () => {
 });
 menuNav.addEventListener('click', e => { if (e.target.tagName === 'A') fecharMenu(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharMenu(); });
-
-// Ministérios: destaca no menu de atalhos o ministério que está na tela
-const atalhos = document.querySelectorAll('.min-atalhos a');
-const observadorMinisterios = new IntersectionObserver(entradas => {
-  entradas.forEach(e => {
-    if (!e.isIntersecting) return;
-    atalhos.forEach(a => {
-      const ativo = a.getAttribute('href') === '#' + e.target.id;
-      a.classList.toggle('ativo', ativo);
-      if (ativo) a.parentElement.scrollTo({ left: a.offsetLeft - a.parentElement.clientWidth / 2 + a.offsetWidth / 2, behavior: 'smooth' });
-    });
-  });
-}, { rootMargin: '-45% 0px -45% 0px' });
-document.querySelectorAll('.ministerio').forEach(m => observadorMinisterios.observe(m));
-
 // Contagem regressiva até o próximo sábado às 17h
 function proximoEncontro(agora) {
   const alvo = new Date(agora);

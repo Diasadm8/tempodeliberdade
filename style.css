@@ -286,89 +286,6 @@ h2 em, h1 em { font-family: var(--biblia); font-weight: 400; font-style: italic;
 .pilares h3 { font-size: 22px; margin: 20px 0 10px; }
 .pilares p { margin: 0; font-size: 15px; color: rgba(255,255,255,.78); }
 
-/* ---------- SERVOS E MINISTÉRIOS ---------- */
-/* Cada ministério tem sua própria cor, definida no index.html (style="--cor:...") */
-.ministerios { padding: 110px max(6vw, 20px); color: var(--branco); background: var(--noite); }
-.ministerios .rotulo { color: var(--ceu); }
-.ministerios h2 em { color: var(--ceu); }
-.servos { max-width: 820px; }
-.servos > p:not(.rotulo) { color: rgba(255,255,255,.8); font-size: 18px; }
-.servos strong { color: var(--branco); }
-.servos blockquote { margin: 28px 0 0; padding-left: 18px; border-left: 3px solid var(--ceu); font-family: var(--biblia); font-style: italic; font-size: 21px; line-height: 1.45; }
-.servos cite, .min-versiculo cite { display: block; margin-top: 6px; font-family: var(--corpo); font-style: normal; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
-
-.caminho { list-style: none; counter-reset: passo; margin: 50px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.caminho li { counter-increment: passo; position: relative; padding: 24px 24px 24px 70px; border-radius: 18px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); }
-.caminho li::before { content: counter(passo); position: absolute; left: 22px; top: 22px; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; font-family: var(--titulo); font-size: 14px; color: var(--noite); background: var(--ceu); }
-.caminho strong { display: block; font-family: var(--titulo); font-size: 17px; }
-.caminho span { font-size: 15px; color: rgba(255,255,255,.7); }
-
-.min-atalhos { position: sticky; top: 66px; z-index: 5; display: flex; gap: 8px; margin: 60px calc(-1 * max(6vw, 20px)) 30px; padding: 14px max(6vw, 20px); overflow-x: auto; scrollbar-width: none; background: rgba(6,18,46,.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-.min-atalhos::-webkit-scrollbar { display: none; }
-.min-atalhos a { flex: none; padding: 8px 16px; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none; border: 1px solid color-mix(in srgb, var(--cor) 50%, transparent); transition: background .3s, color .3s; }
-.min-atalhos a::before { content: ''; display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: var(--cor); }
-.min-atalhos a.ativo, .min-atalhos a:hover { background: var(--cor); color: var(--noite); }
-.min-atalhos a.ativo::before, .min-atalhos a:hover::before { background: var(--noite); }
-
-.ministerio { scroll-margin-top: 140px; display: grid; grid-template-columns: .85fr 1.15fr; gap: 40px 6%; align-items: center; margin-top: 30px; padding: 50px; border-radius: 32px; background: linear-gradient(135deg, color-mix(in srgb, var(--cor) 16%, transparent), rgba(255,255,255,.03) 60%); border: 1px solid color-mix(in srgb, var(--cor) 25%, transparent); }
-.ministerio:nth-of-type(even) .min-emblema { order: 2; }
-.min-emblema { aspect-ratio: 1; max-width: 380px; width: 100%; justify-self: center; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle, color-mix(in srgb, var(--cor) 30%, transparent), transparent 70%); }
-.min-emblema svg { width: 72%; overflow: visible; }
-.min-num { font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--cor); }
-.ministerio h3 { font-size: clamp(30px, 4vw, 48px); margin: 8px 0 6px; }
-.min-chamada { margin: 0 0 18px; font-family: var(--biblia); font-style: italic; font-size: 21px; color: var(--cor); }
-.min-texto > p { color: rgba(255,255,255,.78); }
-.min-texto ul { list-style: none; margin: 22px 0; padding: 0; display: grid; gap: 8px; }
-.min-texto li { position: relative; padding-left: 26px; font-size: 15px; font-weight: 500; }
-.min-texto li::before { content: '✦'; position: absolute; left: 0; color: var(--cor); }
-.min-versiculo { margin: 0; padding: 16px 20px; border-radius: 14px; font-family: var(--biblia); font-style: italic; font-size: 18px; color: var(--branco) !important; background: rgba(255,255,255,.06); }
-
-/* desenhos dos ministérios */
-.min-emblema .traco { fill: none; stroke: #fff; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
-.min-emblema .preenche { fill: var(--cor); }
-/* pregação: ondas de voz e chama do Espírito */
-.onda { fill: none; stroke: var(--cor); stroke-width: 5; stroke-linecap: round; animation: onda 1.8s ease-out infinite; }
-.onda.o2 { animation-delay: .3s; }
-@keyframes onda { 0% { opacity: 0; } 30% { opacity: 1; } 100% { opacity: 0; } }
-.chamita { fill: #ffc75a; transform-origin: 100px 50px; animation: tremer 1.2s ease-in-out infinite alternate; }
-/* música: equalizador e notas */
-.barras rect { fill: var(--cor); transform-box: fill-box; transform-origin: bottom; animation: equalizar 1s ease-in-out infinite alternate; }
-.barras rect:nth-child(2) { animation-delay: -.3s; } .barras rect:nth-child(3) { animation-delay: -.7s; }
-.barras rect:nth-child(4) { animation-delay: -.1s; } .barras rect:nth-child(5) { animation-delay: -.5s; }
-.barras rect:nth-child(6) { animation-delay: -.9s; } .barras rect:nth-child(7) { animation-delay: -.4s; }
-@keyframes equalizar { from { transform: scaleY(.2); } to { transform: scaleY(1); } }
-.nota { fill: #fff; font-size: 30px; animation: subir 3s ease-in infinite; }
-.nota.n2 { animation-delay: 1s; } .nota.n3 { animation-delay: 2s; }
-@keyframes subir { 0% { opacity: 0; transform: translateY(20px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(-40px); } }
-/* comunicação: luz de gravação e flash */
-.rec { fill: #ef4444; animation: piscar 1.2s steps(1) infinite; }
-.flash { fill: #fff; opacity: 0; animation: flash 4s ease-out infinite; }
-@keyframes flash { 0%, 88% { opacity: 0; } 90% { opacity: .7; } 100% { opacity: 0; } }
-/* ornamentação: flor girando e pétalas caindo */
-.flor { fill: var(--cor); transform-origin: 100px 100px; animation: girar 18s linear infinite; }
-@keyframes girar { to { transform: rotate(360deg); } }
-.petala { fill: var(--cor); opacity: 0; animation: cair 5s linear infinite; }
-.petala.p2 { animation-delay: 1.2s; } .petala.p3 { animation-delay: 2.5s; } .petala.p4 { animation-delay: 3.7s; }
-@keyframes cair { 0% { opacity: 0; transform: translate(0, 0) rotate(0); } 15% { opacity: .9; } 100% { opacity: 0; transform: translate(14px, 190px) rotate(220deg); } }
-/* acolhida: porta que se abre e coração batendo */
-.luz-porta { fill: #fff3c4; }
-.porta, .porta-macaneta { fill: var(--cor); transform-box: view-box; transform-origin: 66px 0; animation: abrir 4s ease-in-out infinite; }
-.porta-macaneta { fill: #06122e; }
-@keyframes abrir { 0%, 15% { transform: scaleX(1); } 45%, 75% { transform: scaleX(.18); } 100% { transform: scaleX(1); } }
-.coracao { fill: #fb7185; transform-origin: 100px 60px; animation: bater 1.2s ease-in-out infinite; }
-@keyframes bater { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.18); } 30% { transform: scale(1); } 45% { transform: scale(1.12); } }
-/* intercessão: Espírito Santo descendo e luz sobre a pessoa */
-.raios { fill: none; stroke: #ffe8a3; stroke-width: 3; stroke-linecap: round; opacity: .7; animation: respirar-raios 3s ease-in-out infinite alternate; }
-@keyframes respirar-raios { from { opacity: .25; } to { opacity: .9; } }
-.pomba { animation: pairar 3s ease-in-out infinite; }
-@keyframes pairar { 50% { transform: translateY(10px); } }
-.brilho-pessoa { fill: #ffe8a3; filter: blur(14px); animation: halo 3s ease-in-out infinite alternate; transform-origin: 100px 132px; }
-/* teatro e dança: holofote e máscaras balançando */
-.holofote { fill: color-mix(in srgb, var(--cor) 22%, transparent); animation: respirar-raios 2.5s ease-in-out infinite alternate; }
-.mascara { transform-origin: 0 -34px; animation: balancar 2.4s ease-in-out infinite alternate; }
-.mascara.m2 { animation-delay: -1.2s; }
-@keyframes balancar { from { transform: rotate(-10deg); } to { transform: rotate(10deg); } }
-
 /* ---------- VOCAÇÕES ---------- */
 .vocacoes { --vinho: #8f1d1d; --ouro: #c8962e; background: linear-gradient(180deg, var(--branco), #eef3fc); }
 .voc-topo { max-width: 800px; }
@@ -471,9 +388,6 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10
 }
 @media (max-width: 960px) {
   .sarca-cards, .pilares, .comunidade-fatos { grid-template-columns: 1fr 1fr; }
-  .ministerio { grid-template-columns: 1fr; padding: 36px 30px; }
-  .ministerio:nth-of-type(even) .min-emblema { order: 0; }
-  .min-emblema { max-width: 240px; }
 }
 @media (max-width: 720px) {
   body { font-size: 16px; }
@@ -489,10 +403,6 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10
   .santuario-foto figcaption { text-align: left; padding-left: 10px; font-size: 17px; } /* a data não fica atrás do brasão */
   .santuario-linha { grid-template-columns: 1fr; }
   .comunidade-logo img { max-width: 260px; }
-  .ministerios { padding-top: 80px; padding-bottom: 80px; }
-  .caminho { grid-template-columns: 1fr; }
-  .ministerio { padding: 30px 22px; }
-  .min-emblema { max-width: 200px; }
   .sinais-grade { gap: 60px; }
   .sobre-texto { padding-top: 0; }
   .numeros, .sarca-cards, .pilares { grid-template-columns: 1fr; }
