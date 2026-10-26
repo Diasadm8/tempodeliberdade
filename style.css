@@ -339,15 +339,13 @@ h2 em, h1 em { font-family: var(--biblia); font-weight: 400; font-style: italic;
 
 /* ---------- GALERIA ---------- */
 /* mosaico: as fotos se encaixam em colunas, cada uma com seu formato original */
-.fotos { columns: 3 260px; column-gap: 14px; margin-top: 10px; }
-.foto { position: relative; display: block; margin: 0 0 14px; break-inside: avoid; overflow: hidden; border-radius: 18px; background: var(--gelo); cursor: zoom-in; animation: aparecer .6s ease both; }
-.foto[hidden] { display: none; }
-@keyframes aparecer { from { opacity: 0; transform: translateY(20px); } }
-.foto img { width: 100%; height: auto; transition: transform .5s; }
+/* colunas fixas montadas pelo script.js: cada foto fica no lugar em que foi colocada */
+.fotos { display: flex; gap: 14px; align-items: flex-start; margin-top: 10px; }
+.fotos-coluna { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.foto { position: relative; margin: 0; width: 100%; overflow: hidden; border-radius: 18px; background: var(--gelo); cursor: zoom-in; animation: aparecer .6s ease both; }
+@keyframes aparecer { from { opacity: 0; transform: translateY(16px); } }
+.foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
 .foto:hover img { transform: scale(1.05); }
-.foto figcaption { position: absolute; inset: auto 0 0 0; padding: 30px 16px 12px; font-size: 14px; font-weight: 700; color: var(--branco); background: linear-gradient(transparent, rgba(6,18,46,.85)); opacity: 0; transition: opacity .3s; }
-.foto:hover figcaption { opacity: 1; }
-@media (hover: none) { .foto figcaption { opacity: 1; } }
 .ver-mais { display: block; margin: 30px auto 0; border: 0; font-family: inherit; cursor: pointer; }
 .ver-mais[hidden] { display: none; }
 
@@ -636,9 +634,9 @@ main { overflow-x: clip; } /* a faixa inclinada passa da largura da tela: aqui e
   .familia-logos { gap: 14px; }
   .familia-logos img { width: 112px; height: 112px; }
 
-  .fotos { columns: 2; column-gap: 10px; }
-  .foto { margin-bottom: 10px; border-radius: 12px; }
-  .foto figcaption { font-size: 12px; padding: 24px 10px 8px; }
+  .fotos { gap: 10px; }
+  .fotos-coluna { gap: 10px; }
+  .foto { border-radius: 12px; }
   .tela-cheia { grid-template-columns: 1fr; padding: 60px 10px 20px; }
   .tc-anterior, .tc-proxima { display: none; } /* no celular, troca de foto arrastando o dedo */
   .menu-marca span { display: none; }

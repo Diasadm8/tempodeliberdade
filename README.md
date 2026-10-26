@@ -14,7 +14,7 @@
     Use nomes simples, sem espaços nem acentos, como foto43.jpg, foto44.jpg etc.
     Dica: prefira fotos com até 1400 pixels de largura e aproximadamente 300 KB.
 2. Abra o arquivo script.js e procure a lista FOTOS.
-3. Adicione o nome de cada arquivo e uma legenda curta. A ordem da lista determina a ordem das fotos no site.
+3. Adicione uma linha com o nome do arquivo, por exemplo: `{ arquivo: 'foto82.jpg' },`. Não há legendas. A ordem da lista determina a ordem das fotos no site. (O campo `r`, que aparece nas outras linhas, é a proporção largura ÷ altura da foto; é opcional e só ajuda as fotos a se encaixarem sem "pular" enquanto carregam.)
 
 Para remover uma foto, apague a linha correspondente da lista FOTOS.
 

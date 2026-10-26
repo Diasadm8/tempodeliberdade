@@ -11,88 +11,90 @@ const PALAVRAS = ['fé', 'louvor', 'adoração', 'amizade', 'missão', 'liberdad
 //    Coloque as fotos na pasta imagens/galeria e escreva o nome do arquivo aqui.
 //    Use fotos .jpg de até ~500 KB para o site ficar rápido.
 //    A ordem da lista é a ordem em que as fotos aparecem no site.
+//    r = proporção da foto (largura dividida pela altura). Serve para as fotos
+//    se encaixarem sem "pular" enquanto carregam. Se não souber, pode apagar o "r".
 const FOTOS = [
-  { arquivo: 'foto01.jpg', legenda: 'Adoração ao Santíssimo' },
-  { arquivo: 'foto02.jpg', legenda: 'Casa cheia' },
-  { arquivo: 'foto57.jpg', legenda: 'Adoração no Êxodo' },
-  { arquivo: 'foto68.jpg', legenda: 'Casa cheia' },
-  { arquivo: 'foto03.jpg', legenda: 'Pregação' },
-  { arquivo: 'foto55.jpg', legenda: 'Êxodo: casa cheia' },
-  { arquivo: 'foto04.jpg', legenda: 'Tapete de Corpus Christi' },
-  { arquivo: 'foto05.jpg', legenda: 'Intercessão' },
-  { arquivo: 'foto69.jpg', legenda: 'Pregação' },
-  { arquivo: 'foto56.jpg', legenda: 'Procissão com o Santíssimo' },
-  { arquivo: 'foto06.jpg', legenda: 'Alegria de ser jovem' },
-  { arquivo: 'foto54.jpg', legenda: 'Êxodo · Tempo de Liberdade' },
-  { arquivo: 'foto07.jpg', legenda: 'Juventude no Santuário' },
-  { arquivo: 'foto08.jpg', legenda: 'Louvor' },
-  { arquivo: 'foto60.jpg', legenda: 'Servindo no altar' },
-  { arquivo: 'foto09.jpg', legenda: 'Tempo de Liberdade' },
-  { arquivo: 'foto10.jpg', legenda: 'Momento de oração' },
-  { arquivo: 'foto61.jpg', legenda: 'Abraço fraterno' },
-  { arquivo: 'foto11.jpg', legenda: 'Animação' },
-  { arquivo: 'foto43.jpg', legenda: 'Servindo na cozinha' },
-  { arquivo: 'foto62.jpg', legenda: 'Teatro e encenação' },
-  { arquivo: 'foto13.jpg', legenda: 'Mãos levantadas' },
-  { arquivo: 'foto14.jpg', legenda: 'Acolhida' },
-  { arquivo: 'foto63.jpg', legenda: 'Oração de intercessão' },
-  { arquivo: 'foto44.jpg', legenda: 'Com o padre' },
-  { arquivo: 'foto15.jpg', legenda: 'Encontro de sábado' },
-  { arquivo: 'foto64.jpg', legenda: 'Partilha' },
-  { arquivo: 'foto16.jpg', legenda: 'Oração pelos irmãos' },
-  { arquivo: 'foto17.jpg', legenda: 'Arraiá do grupo' },
-  { arquivo: 'foto65.jpg', legenda: 'Louvor' },
-  { arquivo: 'foto45.jpg', legenda: 'Noite de encontro' },
-  { arquivo: 'foto18.jpg', legenda: 'Pregação' },
-  { arquivo: 'foto66.jpg', legenda: 'Animação' },
-  { arquivo: 'foto19.jpg', legenda: 'Dança' },
-  { arquivo: 'foto20.jpg', legenda: 'Grande encontro' },
-  { arquivo: 'foto67.jpg', legenda: 'Alegria de servir' },
-  { arquivo: 'foto46.jpg', legenda: 'Antes do encontro' },
-  { arquivo: 'foto22.jpg', legenda: 'Diante da Cruz da Trindade Santa' },
-  { arquivo: 'foto70.jpg', legenda: 'Em oração' },
-  { arquivo: 'foto23.jpg', legenda: 'Juventude no Santuário' },
-  { arquivo: 'foto47.jpg', legenda: 'Grupo reunido' },
-  { arquivo: 'foto71.jpg', legenda: 'Momento da cruz' },
-  { arquivo: 'foto24.jpg', legenda: 'Oração' },
-  { arquivo: 'foto25.jpg', legenda: 'Celebração' },
-  { arquivo: 'foto72.jpg', legenda: 'Pregação' },
-  { arquivo: 'foto26.jpg', legenda: 'Louvor' },
-  { arquivo: 'foto48.jpg', legenda: 'Bem-vindos, novos servos!' },
-  { arquivo: 'foto73.jpg', legenda: 'Oração em grupo' },
-  { arquivo: 'foto27.jpg', legenda: 'Encontro' },
-  { arquivo: 'foto28.jpg', legenda: 'Amizade' },
-  { arquivo: 'foto74.jpg', legenda: 'Oração em comunhão' },
-  { arquivo: 'foto29.jpg', legenda: 'Juntos' },
-  { arquivo: 'foto49.jpg', legenda: 'Momento de louvor' },
-  { arquivo: 'foto75.jpg', legenda: 'Pregação' },
-  { arquivo: 'foto30.jpg', legenda: 'Louvor e adoração' },
-  { arquivo: 'foto31.jpg', legenda: 'No Santuário' },
-  { arquivo: 'foto76.jpg', legenda: 'Em oração' },
-  { arquivo: 'foto32.jpg', legenda: 'Juntos na missão' },
-  { arquivo: 'foto50.jpg', legenda: 'Oração de intercessão' },
-  { arquivo: 'foto77.jpg', legenda: 'Momento de oração' },
-  { arquivo: 'foto33.jpg', legenda: 'Alegria de servir' },
-  { arquivo: 'foto34.jpg', legenda: 'Família reunida' },
-  { arquivo: 'foto78.jpg', legenda: 'Comunhão' },
-  { arquivo: 'foto35.jpg', legenda: 'Noite de celebração' },
-  { arquivo: 'foto51.jpg', legenda: 'Louvor' },
-  { arquivo: 'foto79.jpg', legenda: 'Unidos em oração' },
-  { arquivo: 'foto36.jpg', legenda: 'Amigos na fé' },
-  { arquivo: 'foto37.jpg', legenda: 'Família Tempo de Liberdade' },
-  { arquivo: 'foto80.jpg', legenda: 'Louvor e oração' },
-  { arquivo: 'foto38.jpg', legenda: 'Noite de louvor' },
-  { arquivo: 'foto52.jpg', legenda: 'Equipe do Êxodo' },
-  { arquivo: 'foto81.jpg', legenda: 'Intercessão' },
-  { arquivo: 'foto39.jpg', legenda: 'Nossa juventude' },
-  { arquivo: 'foto40.jpg', legenda: 'Tempo de Liberdade' },
-  { arquivo: 'foto82.jpg', legenda: 'Oração em silêncio' },
-  { arquivo: 'foto41.jpg', legenda: 'Encontro' },
-  { arquivo: 'foto53.jpg', legenda: 'Partilha e amizade' },
-  { arquivo: 'foto83.jpg', legenda: 'Oração de intercessão' },
-  { arquivo: 'foto42.jpg', legenda: 'Louvor' },
-  { arquivo: 'foto58.jpg', legenda: 'Alegria no Êxodo' },
-  { arquivo: 'foto59.jpg', legenda: 'Louvor no Êxodo' },
+  { arquivo: 'foto01.jpg', r: 0.860 },
+  { arquivo: 'foto02.jpg', r: 1.333 },
+  { arquivo: 'foto57.jpg', r: 1.510 },
+  { arquivo: 'foto68.jpg', r: 0.861 },
+  { arquivo: 'foto03.jpg', r: 1.000 },
+  { arquivo: 'foto55.jpg', r: 1.510 },
+  { arquivo: 'foto04.jpg', r: 1.327 },
+  { arquivo: 'foto05.jpg', r: 0.764 },
+  { arquivo: 'foto69.jpg', r: 0.750 },
+  { arquivo: 'foto56.jpg', r: 1.510 },
+  { arquivo: 'foto06.jpg', r: 1.336 },
+  { arquivo: 'foto54.jpg', r: 1.510 },
+  { arquivo: 'foto07.jpg', r: 1.333 },
+  { arquivo: 'foto08.jpg', r: 1.333 },
+  { arquivo: 'foto60.jpg', r: 0.800 },
+  { arquivo: 'foto09.jpg', r: 0.750 },
+  { arquivo: 'foto10.jpg', r: 0.751 },
+  { arquivo: 'foto61.jpg', r: 0.800 },
+  { arquivo: 'foto11.jpg', r: 1.000 },
+  { arquivo: 'foto43.jpg', r: 0.750 },
+  { arquivo: 'foto62.jpg', r: 0.800 },
+  { arquivo: 'foto13.jpg', r: 0.800 },
+  { arquivo: 'foto14.jpg', r: 1.000 },
+  { arquivo: 'foto63.jpg', r: 0.750 },
+  { arquivo: 'foto44.jpg', r: 1.333 },
+  { arquivo: 'foto15.jpg', r: 0.860 },
+  { arquivo: 'foto64.jpg', r: 0.754 },
+  { arquivo: 'foto16.jpg', r: 0.826 },
+  { arquivo: 'foto17.jpg', r: 1.333 },
+  { arquivo: 'foto65.jpg', r: 0.754 },
+  { arquivo: 'foto45.jpg', r: 1.349 },
+  { arquivo: 'foto18.jpg', r: 0.750 },
+  { arquivo: 'foto66.jpg', r: 0.859 },
+  { arquivo: 'foto19.jpg', r: 1.000 },
+  { arquivo: 'foto20.jpg', r: 1.500 },
+  { arquivo: 'foto67.jpg', r: 1.333 },
+  { arquivo: 'foto46.jpg', r: 0.600 },
+  { arquivo: 'foto22.jpg', r: 1.914 },
+  { arquivo: 'foto70.jpg', r: 0.751 },
+  { arquivo: 'foto23.jpg', r: 1.778 },
+  { arquivo: 'foto47.jpg', r: 1.667 },
+  { arquivo: 'foto71.jpg', r: 0.750 },
+  { arquivo: 'foto24.jpg', r: 0.751 },
+  { arquivo: 'foto25.jpg', r: 1.501 },
+  { arquivo: 'foto72.jpg', r: 0.750 },
+  { arquivo: 'foto26.jpg', r: 1.500 },
+  { arquivo: 'foto48.jpg', r: 1.000 },
+  { arquivo: 'foto73.jpg', r: 0.750 },
+  { arquivo: 'foto27.jpg', r: 1.502 },
+  { arquivo: 'foto28.jpg', r: 0.751 },
+  { arquivo: 'foto74.jpg', r: 0.750 },
+  { arquivo: 'foto29.jpg', r: 1.334 },
+  { arquivo: 'foto49.jpg', r: 1.668 },
+  { arquivo: 'foto75.jpg', r: 0.751 },
+  { arquivo: 'foto30.jpg', r: 0.800 },
+  { arquivo: 'foto31.jpg', r: 0.751 },
+  { arquivo: 'foto76.jpg', r: 0.751 },
+  { arquivo: 'foto32.jpg', r: 1.045 },
+  { arquivo: 'foto50.jpg', r: 0.600 },
+  { arquivo: 'foto77.jpg', r: 0.750 },
+  { arquivo: 'foto33.jpg', r: 1.000 },
+  { arquivo: 'foto34.jpg', r: 1.333 },
+  { arquivo: 'foto78.jpg', r: 0.754 },
+  { arquivo: 'foto35.jpg', r: 1.502 },
+  { arquivo: 'foto51.jpg', r: 1.667 },
+  { arquivo: 'foto79.jpg', r: 0.764 },
+  { arquivo: 'foto36.jpg', r: 1.333 },
+  { arquivo: 'foto37.jpg', r: 1.500 },
+  { arquivo: 'foto80.jpg', r: 0.750 },
+  { arquivo: 'foto38.jpg', r: 1.333 },
+  { arquivo: 'foto52.jpg', r: 1.778 },
+  { arquivo: 'foto81.jpg', r: 0.750 },
+  { arquivo: 'foto39.jpg', r: 1.333 },
+  { arquivo: 'foto40.jpg', r: 1.333 },
+  { arquivo: 'foto82.jpg', r: 0.749 },
+  { arquivo: 'foto41.jpg', r: 1.335 },
+  { arquivo: 'foto53.jpg', r: 1.778 },
+  { arquivo: 'foto83.jpg', r: 0.750 },
+  { arquivo: 'foto42.jpg', r: 1.335 },
+  { arquivo: 'foto58.jpg', r: 1.510 },
+  { arquivo: 'foto59.jpg', r: 1.510 },
 ];
 
 // Quantas fotos aparecem antes do botão "Ver mais fotos"
@@ -188,7 +190,8 @@ function atualizarContagem() {
 atualizarContagem();
 setInterval(atualizarContagem, 1000);
 
-// Galeria: monta as fotos, mostra aos poucos e abre em tela cheia ao clicar
+// Galeria: colunas fixas. Cada foto é colocada uma única vez, na coluna mais baixa,
+// e nunca mais muda de lugar (por isso "Ver mais" não embaralha nada).
 const fotos = document.getElementById('fotos');
 const verMais = document.getElementById('ver-mais');
 const telaCheia = document.getElementById('tela-cheia');
@@ -197,37 +200,54 @@ const telaCheiaLegenda = document.getElementById('tela-cheia-legenda');
 let mostrando = 0;
 let atual = 0;
 
-FOTOS.forEach((f, i) => {
+// um elemento para cada foto, criado de uma vez; a imagem só carrega quando chega perto da tela
+const elementos = FOTOS.map((f, i) => {
   const fig = document.createElement('figure');
   fig.className = 'foto';
-  fig.hidden = true;
+  fig.style.aspectRatio = f.r || 0.75; // reserva o espaço da foto antes de ela carregar
   const img = document.createElement('img');
   img.src = 'imagens/galeria/' + f.arquivo;
-  img.alt = f.legenda;
+  img.alt = 'Foto do grupo Tempo de Liberdade';
   img.loading = 'lazy';
   img.onerror = () => fig.remove(); // se o arquivo não existir, a foto simplesmente não aparece
-  const legenda = document.createElement('figcaption');
-  legenda.textContent = f.legenda;
-  fig.append(img, legenda);
+  fig.append(img);
   fig.addEventListener('click', () => abrirFoto(i));
-  fotos.append(fig);
+  return fig;
 });
 
+let colunas = [], alturas = [];
+function montarColunas() {
+  const n = window.matchMedia('(max-width: 900px)').matches ? 2 : 3;
+  if (colunas.length === n) return;
+  fotos.replaceChildren();
+  colunas = Array.from({ length: n }, () => { const c = document.createElement('div'); c.className = 'fotos-coluna'; fotos.append(c); return c; });
+  alturas = new Array(n).fill(0);
+  for (let i = 0; i < mostrando; i++) colocar(i); // refaz o que já estava na tela, na mesma ordem
+}
+function colocar(i) {
+  let c = 0;
+  alturas.forEach((h, k) => { if (h < alturas[c] - 0.001) c = k; }); // coluna mais baixa (a da esquerda se empatar)
+  colunas[c].append(elementos[i]);
+  alturas[c] += 1 / (FOTOS[i].r || 0.75) + 0.04;
+}
 function mostrarMais() {
-  mostrando = Math.min(mostrando + porVez, FOTOS.length);
-  [...fotos.children].forEach((fig, i) => { if (i < mostrando) fig.hidden = false; });
+  const ate = Math.min(mostrando + porVez, FOTOS.length);
+  for (let i = mostrando; i < ate; i++) colocar(i);
+  mostrando = ate;
   const restantes = FOTOS.length - mostrando;
   verMais.hidden = restantes <= 0;
   verMais.textContent = `Ver mais fotos (${restantes})`;
 }
+montarColunas();
+window.addEventListener('resize', montarColunas);
 verMais.addEventListener('click', mostrarMais);
 mostrarMais();
 
 function abrirFoto(i) {
   atual = (i + FOTOS.length) % FOTOS.length;
   telaCheiaImg.src = 'imagens/galeria/' + FOTOS[atual].arquivo;
-  telaCheiaImg.alt = FOTOS[atual].legenda;
-  telaCheiaLegenda.textContent = `${FOTOS[atual].legenda} · ${atual + 1} de ${FOTOS.length}`;
+  telaCheiaImg.alt = 'Foto do grupo Tempo de Liberdade';
+  telaCheiaLegenda.textContent = `${atual + 1} de ${FOTOS.length}`;
   telaCheia.hidden = false;
   document.body.style.overflow = 'hidden';
 }
