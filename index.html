@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;500;700&family=Fraunces:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -38,15 +38,18 @@
 
     <!-- ===================== INÍCIO ===================== -->
     <section class="inicio" id="inicio">
-      <!-- Imagem de fundo (ampliada e nítida): imagens/logo-grupo-grande.jpg -->
-      <img class="inicio-fundo" src="imagens/logo-grupo-grande.jpg" alt="Logo do Grupo Jovem Tempo de Liberdade" fetchpriority="high">
+      <!-- Fundo: foto desfocada (atmosfera) + logo vetorizada em SVG, nítida em qualquer tela -->
+      <div class="inicio-fundo">
+        <img class="fundo-foto" src="imagens/logo-grupo-grande.jpg" alt="" aria-hidden="true">
+        <img class="fundo-logo" src="imagens/logo-grupo.svg" alt="Logo do Grupo Jovem Tempo de Liberdade" fetchpriority="high">
+      </div>
       <div class="inicio-luz" aria-hidden="true"></div>
 
       <div class="inicio-texto">
         <p class="selo">Grupo Jovem Católico · Desde 2009</p>
         <h1>
           <!-- As palavras que se alternam ficam no arquivo script.js (lista PALAVRAS) -->
-          Tempo de <span class="palavra" id="palavra">liberdade</span><span class="cursor" aria-hidden="true"></span>
+          Tempo de <span class="palavra-linha"><span class="palavra" id="palavra">liberdade</span><span class="cursor" aria-hidden="true"></span></span>
         </h1>
         <p class="inicio-sub">Uma juventude que encontrou em Cristo a verdadeira liberdade.</p>
         <a class="botao" href="#sobre">Conheça nossa missão ↓</a>
@@ -510,6 +513,6 @@
     <button class="tc-botao tc-proxima" id="tela-cheia-proxima" type="button" aria-label="Próxima foto">›</button>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>
