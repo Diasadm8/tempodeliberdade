@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;500;700&family=Fraunces:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 
@@ -21,18 +21,21 @@
       <img src="imagens/logo-grupo.jpg" alt="">
       <span>Tempo de Liberdade</span>
     </a>
-    <nav>
+    <nav id="menu-nav">
       <a href="#sobre">Quem somos</a>
       <a href="#santuario">Santuário</a>
       <a href="#comunidade">Comunidade</a>
-      <a href="#sinais">Nossos sinais</a>
-      <a href="#sarca">A Palavra</a>
+      <a href="#sinais">Sinais</a>
+      <a href="#sarca">Palavra</a>
       <a href="#carisma">Carisma</a>
       <a href="#ministerios">Ministérios</a>
+      <a href="#vocacoes">Vocações</a>
       <a href="#encontros">Encontros</a>
       <a href="#galeria">Galeria</a>
     </nav>
     <a class="menu-insta" href="https://www.instagram.com/tempodeliberdade/" target="_blank" rel="noopener">@tempodeliberdade</a>
+    <!-- Botão do menu (aparece só em telas menores) -->
+    <button class="menu-botao" id="menu-botao" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-nav"><span></span><span></span><span></span></button>
   </header>
 
   <main>
@@ -464,10 +467,63 @@
       </article>
     </section>
 
+    <!-- ===================== VOCAÇÕES ===================== -->
+    <section class="secao vocacoes" id="vocacoes">
+      <div class="voc-topo revelar">
+        <p class="rotulo">08 · Vocações</p>
+        <h2>Do grupo nascem <em>vocações.</em></h2>
+        <p>O Tempo de Liberdade não é só um lugar de encontro: é terra boa, onde a semente da vocação germina. Quem encontra o amor de Deus descobre também para que foi criado. E é no louvor, na adoração, no serviço e na amizade do grupo que muitos jovens ouvem esse chamado pela primeira vez.</p>
+        <blockquote>“Antes de formar-te no ventre materno, eu te conheci; antes que saísses do seio, eu te consagrei.” <cite>Jr 1,5</cite></blockquote>
+      </div>
+
+      <div class="voc-corpo">
+        <!-- As quatro fotos: se quiser trocar, substitua os arquivos imagens/vocacao-1.jpg a vocacao-4.jpg -->
+        <div class="voc-fotos revelar">
+          <div class="voc-col">
+            <img src="imagens/vocacao-4.jpg" alt="Jovem de camisa clériga diante da cruz da Trindade Santa e da imagem de Nossa Senhora, Mãe do Infinito Amor" loading="lazy">
+            <img src="imagens/vocacao-3.jpg" alt="Jovem tocando violão diante da imagem de Nossa Senhora, Mãe do Infinito Amor" loading="lazy">
+          </div>
+          <div class="voc-col">
+            <img src="imagens/vocacao-1.jpg" alt="Casal de jovens sentado num banco, com uma Bíblia ao lado e um microfone na mão" loading="lazy">
+            <img src="imagens/vocacao-2.jpg" alt="Casal de jovens em oração, iluminado por luz vermelha, com um microfone e uma Bíblia" loading="lazy">
+          </div>
+        </div>
+
+        <div class="voc-cards">
+          <article class="voc-card voc-sacerdotal revelar">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 8h20c0 10-3 15-10 16-7-1-10-6-10-16ZM24 24v12M16 40h16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="voc-tag">Sacramento da Ordem</span>
+            <h3>Vocação sacerdotal</h3>
+            <p>Do louvor, da adoração e do serviço no grupo, alguns jovens ouvem o chamado ao sacerdócio. Dizem “sim” a Cristo para servir a Igreja no altar, na Palavra e no cuidado do povo de Deus.</p>
+          </article>
+
+          <article class="voc-card voc-matrimonial revelar">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="18" cy="28" r="10" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="30" cy="28" r="10" fill="none" stroke="currentColor" stroke-width="3"/><path d="M24 8l3 4-3 4-3-4Z" fill="currentColor"/></svg>
+            <span class="voc-tag">Sacramento do Matrimônio</span>
+            <h3>Vocação matrimonial</h3>
+            <p>Outros descobrem que Deus os chama a amar em aliança. Amadurecidos na oração, na amizade e na vida em comunidade, formam famílias cristãs: pequenas igrejas domésticas onde o amor de Deus se faz vida concreta.</p>
+          </article>
+
+          <article class="voc-card voc-consagrada revelar">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4c3 8 14 12 14 24a14 14 0 0 1-28 0c0-8 5-11 7-18 3 4 3 8 6 10-1-6-2-11 1-16Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>
+            <span class="voc-tag">Comunidade de Aliança Trindade Santa</span>
+            <h3>Consagração à Comunidade</h3>
+            <p>É dessa vocação, nascida no grupo jovem, que surgem os consagrados à Comunidade de Aliança Trindade Santa: jovens que dizem “sim” ao carisma do louvor e da adoração à Santíssima Trindade e à evangelização da juventude, vivendo a santidade no dia a dia, na escola, no trabalho e na família.</p>
+          </article>
+        </div>
+      </div>
+
+      <p class="voc-fecho revelar">Toda vocação nasce do mesmo amor e se torna <strong>fecunda nos ministérios e nos sacramentos.</strong></p>
+      <div class="voc-convite revelar">
+        <p>Cada “sim” começa pequeno: num sábado, às 17h. O seu também pode começar aqui.</p>
+        <a class="botao" href="#encontros">Venha nos conhecer ↓</a>
+      </div>
+    </section>
+
     <!-- ===================== ENCONTROS ===================== -->
     <section class="secao encontros" id="encontros">
       <div class="encontros-info revelar">
-        <p class="rotulo">08 · Nossos encontros</p>
+        <p class="rotulo">09 · Nossos encontros</p>
         <h2>Todo sábado,<br><em>às 17h.</em></h2>
         <p>Louvor, oração, formação e muita amizade. Não precisa de inscrição nem de convite: é só chegar. Se é a sua primeira vez, procure alguém da equipe. A gente vai te receber!</p>
 
@@ -504,7 +560,7 @@
     <!-- ===================== GALERIA ===================== -->
     <section class="secao galeria" id="galeria">
       <div class="revelar">
-        <p class="rotulo">09 · Galeria</p>
+        <p class="rotulo">10 · Galeria</p>
         <h2>Momentos que <em>ficam.</em></h2>
       </div>
       <!-- As fotos são colocadas automaticamente pelo script.js (lista FOTOS) -->
@@ -536,6 +592,6 @@
     <button class="tc-botao tc-proxima" id="tela-cheia-proxima" type="button" aria-label="Próxima foto">›</button>
   </div>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>

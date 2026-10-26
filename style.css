@@ -88,8 +88,13 @@ h2 em, h1 em { font-family: var(--biblia); font-weight: 400; font-style: italic;
 }
 .menu-marca { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--titulo); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
 .menu-marca img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
-.menu nav { display: flex; gap: 24px; margin-left: auto; font-size: 14px; }
-.menu nav a { text-decoration: none; opacity: .8; transition: opacity .2s; }
+.menu nav { display: flex; gap: 20px; margin-left: auto; font-size: 14px; }
+.menu nav a { text-decoration: none; opacity: .8; transition: opacity .2s; white-space: nowrap; }
+.menu-botao { display: none; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; background: transparent; cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+.menu-botao span { display: block; width: 18px; height: 2px; border-radius: 2px; background: var(--branco); transition: transform .3s, opacity .3s; }
+.menu-botao[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menu-botao[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-botao[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 .menu nav a:hover { opacity: 1; }
 .menu-insta { font-size: 13px; font-weight: 700; text-decoration: none; padding: 8px 14px; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; }
 
@@ -364,6 +369,38 @@ h2 em, h1 em { font-family: var(--biblia); font-weight: 400; font-style: italic;
 .mascara.m2 { animation-delay: -1.2s; }
 @keyframes balancar { from { transform: rotate(-10deg); } to { transform: rotate(10deg); } }
 
+/* ---------- VOCAÇÕES ---------- */
+.vocacoes { --vinho: #8f1d1d; --ouro: #c8962e; background: linear-gradient(180deg, var(--branco), #eef3fc); }
+.voc-topo { max-width: 800px; }
+.voc-topo > p:not(.rotulo) { color: var(--suave); font-size: 18px; }
+.voc-topo blockquote { margin: 26px 0 0; padding-left: 18px; border-left: 3px solid var(--ouro); font-family: var(--biblia); font-style: italic; font-size: 21px; line-height: 1.45; }
+.voc-topo cite { display: block; margin-top: 6px; font-family: var(--corpo); font-style: normal; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--suave); }
+
+.voc-corpo { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px 6%; align-items: center; margin-top: 56px; }
+.voc-fotos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.voc-col { display: flex; flex-direction: column; gap: 14px; }
+.voc-col:nth-child(2) { margin-top: 46px; } /* a segunda coluna desce um pouco: efeito de mosaico */
+.voc-col img { width: 100%; height: auto; border-radius: 18px; border: 5px solid var(--branco); box-shadow: 0 20px 45px rgba(6,18,46,.18); transition: transform .5s; }
+.voc-col img:nth-child(odd) { transform: rotate(-1.4deg); }
+.voc-col img:nth-child(even) { transform: rotate(1.2deg); }
+.voc-col img:hover { transform: rotate(0) scale(1.03); }
+
+.voc-cards { display: grid; gap: 16px; }
+.voc-card { position: relative; padding: 26px 26px 26px 92px; border-radius: 20px; background: var(--branco); box-shadow: 0 14px 34px rgba(6,18,46,.08); border-left: 5px solid var(--cor); transition: transform .3s; }
+.voc-card:hover { transform: translateX(6px); }
+.voc-card svg { position: absolute; left: 24px; top: 26px; width: 48px; height: 48px; color: var(--cor); }
+.voc-sacerdotal { --cor: var(--vinho); }
+.voc-matrimonial { --cor: var(--ouro); }
+.voc-consagrada { --cor: var(--mariano); }
+.voc-tag { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--cor); }
+.voc-card h3 { font-size: 20px; margin: 6px 0 8px; }
+.voc-card p { margin: 0; font-size: 15px; color: var(--suave); }
+
+.voc-fecho { max-width: 760px; margin: 60px auto 0; text-align: center; font-family: var(--biblia); font-style: italic; font-size: clamp(22px, 3vw, 32px); line-height: 1.4; }
+.voc-fecho strong { color: var(--mariano); font-weight: 600; }
+.voc-convite { margin-top: 30px; text-align: center; }
+.voc-convite p { margin: 0 0 18px; color: var(--suave); }
+
 /* ---------- ENCONTROS ---------- */
 .encontros { background: var(--gelo); display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px 6%; align-items: center; }
 .encontros-info > p { color: var(--suave); max-width: 520px; }
@@ -419,9 +456,18 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10
 .revelar.visivel { opacity: 1; transform: none; }
 
 /* ---------- CELULAR E TABLET ---------- */
-@media (max-width: 1340px) {
-  .menu nav { display: none; }
+@media (max-width: 1400px) {
+  /* menu vira botão "hambúrguer": a lista abre logo abaixo da barra */
+  .menu-botao { display: flex; }
   .menu-insta { margin-left: auto; }
+  .menu nav {
+    position: absolute; top: 66px; left: 0; right: 0; margin: 0;
+    display: none; flex-direction: column; gap: 0;
+    padding: 8px max(4vw, 16px) 16px; max-height: calc(100svh - 66px); overflow-y: auto;
+    background: rgba(6,18,46,.97); border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+  .menu nav.aberto { display: flex; }
+  .menu nav a { padding: 14px 4px; font-size: 17px; opacity: 1; border-bottom: 1px solid rgba(255,255,255,.08); }
 }
 @media (max-width: 960px) {
   .sarca-cards, .pilares, .comunidade-fatos { grid-template-columns: 1fr 1fr; }
@@ -435,6 +481,10 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10
   .inicio h1 { font-size: 8.4vw; }
   .inicio-sub { font-size: 16px; }
   .sobre, .encontros, .comunidade, .sinais-grade, .santuario { grid-template-columns: 1fr; }
+  .voc-corpo { grid-template-columns: 1fr; margin-top: 36px; }
+  .voc-col:nth-child(2) { margin-top: 30px; }
+  .voc-card { padding: 22px 20px 22px 20px; }
+  .voc-card svg { position: static; display: block; margin-bottom: 10px; }
   .santuario-brasao { right: 2%; width: 34%; }
   .santuario-foto figcaption { text-align: left; padding-left: 10px; font-size: 17px; } /* a data não fica atrás do brasão */
   .santuario-linha { grid-template-columns: 1fr; }
