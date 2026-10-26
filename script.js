@@ -103,6 +103,8 @@ const FOTOS_POR_VEZ = 12;
    --------------------------------------------------------- */
 
 const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// no celular a galeria mostra menos fotos de cada vez (menos rolagem)
+const porVez = window.matchMedia('(max-width: 900px)').matches ? 8 : FOTOS_POR_VEZ;
 
 // Ano no rodapé e anos de caminhada (fundação: 5 de dezembro de 2009)
 const hoje = new Date();
@@ -212,7 +214,7 @@ FOTOS.forEach((f, i) => {
 });
 
 function mostrarMais() {
-  mostrando = Math.min(mostrando + FOTOS_POR_VEZ, FOTOS.length);
+  mostrando = Math.min(mostrando + porVez, FOTOS.length);
   [...fotos.children].forEach((fig, i) => { if (i < mostrando) fig.hidden = false; });
   const restantes = FOTOS.length - mostrando;
   verMais.hidden = restantes <= 0;
@@ -286,10 +288,69 @@ function desenharBrasas() {
     ctx.fill();
     if (b.y < -10) brasas[i] = novaBrasa(false);
   });
-  requestAnimationFrame(desenharBrasas);
+  if (brasasVisiveis) requestAnimationFrame(desenharBrasas); else brasasRodando = false;
 }
+// as brasas só se movem enquanto a seção está na tela (poupa bateria no celular)
+let brasasVisiveis = false, brasasRodando = false;
 if (!semMovimento) {
   ajustarCanvas();
   window.addEventListener('resize', ajustarCanvas);
-  desenharBrasas();
+  new IntersectionObserver(([e]) => {
+    brasasVisiveis = e.isIntersecting;
+    if (brasasVisiveis && !brasasRodando) { brasasRodando = true; desenharBrasas(); }
+  }).observe(document.getElementById('sarca'));
 }
+
+// Barra de progresso de leitura e movimento suave dos enfeites ao rolar
+const barra = document.getElementById('progresso');
+const enfeites = [...document.querySelectorAll('[data-par]')];
+let aguardando = false;
+function aoRolar() {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  barra.style.transform = `scaleX(${max > 0 ? Math.min(scrollY / max, 1) : 0})`;
+  if (!semMovimento) {
+    enfeites.forEach(el => {
+      const r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < -300 || r.top > innerHeight + 300) return; // fora da tela: não mexe
+      const centro = r.top + r.height / 2 - innerHeight / 2;
+      el.style.setProperty('--py', `${(centro * parseFloat(el.dataset.par)).toFixed(1)}px`);
+    });
+  }
+  aguardando = false;
+}
+window.addEventListener('scroll', () => { if (!aguardando) { aguardando = true; requestAnimationFrame(aoRolar); } }, { passive: true });
+aoRolar();
+
+// Números que "contam" até o valor final quando aparecem na tela
+document.querySelectorAll('[data-contar]').forEach(el => {
+  const alvo = parseInt(el.textContent, 10);
+  if (semMovimento || !alvo) return;
+  el.textContent = '0';
+  new IntersectionObserver(([e], obs) => {
+    if (!e.isIntersecting) return;
+    obs.disconnect();
+    const inicio = performance.now();
+    const passo = agora => {
+      const t = Math.min((agora - inicio) / 1400, 1);
+      el.textContent = Math.round(alvo * (1 - Math.pow(1 - t, 3)));
+      if (t < 1) requestAnimationFrame(passo);
+    };
+    requestAnimationFrame(passo);
+  }, { threshold: 0.6 }).observe(el);
+});
+
+// Carrosséis (no celular): bolinhas que mostram em qual cartão você está
+document.querySelectorAll('.carrossel').forEach(c => {
+  const pontos = document.createElement('div');
+  pontos.className = 'pontinhos';
+  pontos.setAttribute('aria-hidden', 'true');
+  [...c.children].forEach(() => pontos.append(document.createElement('i')));
+  c.after(pontos);
+  const marcar = () => {
+    const w = c.children[0].getBoundingClientRect().width + 12;
+    const i = Math.min(Math.round(c.scrollLeft / w), c.children.length - 1);
+    [...pontos.children].forEach((p, k) => p.classList.toggle('ativo', k === i));
+  };
+  c.addEventListener('scroll', () => requestAnimationFrame(marcar), { passive: true });
+  marcar();
+});

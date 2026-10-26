@@ -11,9 +11,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;500;700&family=Fraunces:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
+  <div class="progresso" id="progresso" aria-hidden="true"></div>
 
   <!-- ===================== MENU ===================== -->
   <header class="menu">
@@ -59,8 +60,12 @@
       </div>
     </section>
 
+    <!-- ===================== FAIXA ANIMADA ===================== -->
+    <div class="faixa" aria-hidden="true"><div class="faixa-trilho"><span>Fé</span><i>✦</i><span>Louvor</span><i>✦</i><span>Adoração</span><i>✦</i><span>Amizade</span><i>✦</i><span>Missão</span><i>✦</i><span>Liberdade</span><i>✦</i><span>Fé</span><i>✦</i><span>Louvor</span><i>✦</i><span>Adoração</span><i>✦</i><span>Amizade</span><i>✦</i><span>Missão</span><i>✦</i><span>Liberdade</span><i>✦</i></div></div>
+
     <!-- ===================== QUEM SOMOS ===================== -->
     <section class="secao sobre" id="sobre">
+      <span class="deco deco-ano" data-par="-.05"></span><span class="deco deco-pontos" data-par=".08"></span>
       <div class="sobre-titulo revelar">
         <p class="rotulo">01 · Quem somos</p>
         <h2>Uma geração.<br><em>Um chamado.</em></h2>
@@ -73,14 +78,15 @@
       </div>
 
       <ul class="numeros revelar">
-        <li><strong id="anos">16</strong><span>anos de caminhada</span></li>
+        <li><strong id="anos" data-contar>16</strong><span>anos de caminhada</span></li>
         <li><strong>Todo</strong><span>sábado, às 17h</span></li>
         <li><strong>1</strong><span>chamado: ser luz para outros jovens</span></li>
       </ul>
     </section>
 
     <!-- ===================== SANTUÁRIO: ONDE NASCEMOS ===================== -->
-    <section class="secao santuario" id="santuario">
+    <section class="secao santuario onda" id="santuario">
+      <span class="deco deco-raios"></span>
       <div class="santuario-foto revelar">
         <figure>
           <img src="imagens/paroquia-grupo.jpg" alt="Jovens do grupo reunidos com um padre, diante do altar do Santuário" loading="lazy">
@@ -102,7 +108,8 @@
     </section>
 
     <!-- ===================== VOCAÇÕES ===================== -->
-    <section class="secao vocacoes" id="vocacoes">
+    <section class="secao vocacoes onda" id="vocacoes">
+      <span class="deco deco-aneis" data-par=".1"></span><span class="deco deco-chama-voc" data-par="-.08"></span>
       <div class="voc-topo revelar">
         <p class="rotulo">03 · Vocações</p>
         <h2>Do grupo nascem <em>vocações.</em></h2>
@@ -123,7 +130,7 @@
           </div>
         </div>
 
-        <div class="voc-cards">
+        <div class="voc-cards carrossel">
           <article class="voc-card voc-sacerdotal revelar">
             <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 8h20c0 10-3 15-10 16-7-1-10-6-10-16ZM24 24v12M16 40h16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span class="voc-tag">Sacramento da Ordem</span>
@@ -155,7 +162,8 @@
     </section>
 
     <!-- ===================== COMUNIDADE TRINDADE SANTA ===================== -->
-    <section class="secao comunidade" id="comunidade">
+    <section class="secao comunidade onda" id="comunidade">
+      <span class="deco deco-trindade"></span>
       <div class="comunidade-logo revelar">
         <img src="imagens/logo-comunidade.jpg" alt="Comunidade de Aliança Trindade Santa">
       </div>
@@ -178,13 +186,14 @@
     </section>
 
     <!-- ===================== NOSSOS SINAIS: CRUZ E NOSSA SENHORA ===================== -->
-    <section class="secao sinais" id="sinais">
+    <section class="secao sinais onda" id="sinais">
+      <span class="deco deco-luzes"></span>
       <div class="sinais-topo revelar">
         <p class="rotulo">05 · Nossos sinais</p>
         <h2>No centro de tudo, <em>o Amor.</em></h2>
       </div>
 
-      <div class="sinais-grade">
+      <div class="sinais-grade carrossel">
         <article class="sinal sinal-cruz revelar">
           <div class="sinal-img">
             <img src="imagens/cruz-trindade-santa.jpg" alt="Cruz da Trindade Santa: o Pai sustenta a cruz do Filho, e o Espírito Santo aparece como pomba" loading="lazy">
@@ -208,7 +217,8 @@
     </section>
 
     <!-- ===================== PALAVRA FUNDANTE: A SARÇA ARDENTE ===================== -->
-    <section class="sarca" id="sarca">
+    <section class="sarca onda" id="sarca">
+      <span class="deco deco-raios-fogo"></span>
       <canvas id="brasas" aria-hidden="true"></canvas>
 
       <div class="sarca-topo revelar">
@@ -236,7 +246,7 @@
 
       <p class="sarca-intro revelar">Foi no deserto, cuidando do rebanho, num dia comum, que Moisés encontrou Deus. É essa passagem que dá origem e sentido ao nosso grupo. Nela aprendemos quatro coisas:</p>
 
-      <div class="sarca-cards">
+      <div class="sarca-cards carrossel">
         <article class="revelar">
           <span class="ref">Êx 3,2</span>
           <h3>O fogo que não consome</h3>
@@ -261,14 +271,15 @@
     </section>
 
     <!-- ===================== CARISMA E MISSÃO ===================== -->
-    <section class="secao carisma" id="carisma">
+    <section class="secao carisma onda" id="carisma">
+      <span class="deco deco-aneis-azuis"></span><span class="deco deco-cruz" data-par=".1"></span>
       <div class="carisma-topo revelar">
         <p class="rotulo">07 · Carisma e missão</p>
         <h2>Santos no <em>ordinário.</em></h2>
         <p>Vivemos o louvor e a adoração à Santíssima Trindade e evangelizamos, com foco especial na juventude e na santificação do cotidiano. Não vivemos isolados em mosteiros: vivemos no dia a dia, na sala de aula, no trabalho e em casa, levando o fogo que recebemos.</p>
       </div>
 
-      <div class="pilares">
+      <div class="pilares carrossel">
         <article class="revelar">
           <span class="pilar-num">01</span>
           <h3>Louvor</h3>
@@ -293,7 +304,8 @@
     </section>
 
     <!-- ===================== ENCONTROS ===================== -->
-    <section class="secao encontros" id="encontros">
+    <section class="secao encontros onda" id="encontros">
+      <span class="deco deco-17h" data-par="-.06"></span>
       <div class="encontros-info revelar">
         <p class="rotulo">08 · Nossos encontros</p>
         <h2>Todo sábado,<br><em>às 17h.</em></h2>
@@ -330,7 +342,8 @@
     </section>
 
     <!-- ===================== GALERIA ===================== -->
-    <section class="secao galeria" id="galeria">
+    <section class="secao galeria onda" id="galeria">
+      <span class="deco deco-blobs" data-par=".06"></span>
       <div class="revelar">
         <p class="rotulo">09 · Galeria</p>
         <h2>Momentos que <em>ficam.</em></h2>
@@ -341,7 +354,8 @@
     </section>
 
     <!-- ===================== FINAL ===================== -->
-    <section class="final">
+    <section class="final onda">
+      <span class="deco deco-raios-final"></span><span class="deco deco-estrelas"></span>
       <p class="final-ref">“Moisés, Moisés!” E ele respondeu: “Eis-me aqui.” · Êx 3,4</p>
       <h2>Você foi chamado<br><em>para algo maior.</em></h2>
       <a class="botao botao-claro" href="https://www.instagram.com/tempodeliberdade/" target="_blank" rel="noopener">Siga @tempodeliberdade no Instagram ↗</a>
@@ -364,6 +378,6 @@
     <button class="tc-botao tc-proxima" id="tela-cheia-proxima" type="button" aria-label="Próxima foto">›</button>
   </div>
 
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>
