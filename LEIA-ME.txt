@@ -20,17 +20,16 @@ COMO TROCAR AS PALAVRAS DO TÍTULO ("Tempo de ...")
 COMO MUDAR UM TEXTO
   Abra o index.html, procure (Ctrl+F) o texto que quer mudar e escreva por cima.
 
-COMO PUBLICAR (VERCEL, GRÁTIS)
-  O arquivo vercel.json já deixa o site pronto para a Vercel.
-  1. Crie uma conta em https://vercel.com (pode entrar com o GitHub).
-  2. Envie a pasta "site" para um repositório no GitHub.
-  3. Na Vercel: Add New > Project > escolha o repositório > Deploy.
-     Não é preciso configurar nada: deixe "Framework Preset" como "Other".
-  4. Cada vez que você enviar uma mudança para o GitHub, o site atualiza sozinho.
+COMO O SITE É PUBLICADO (GITHUB PAGES, GRÁTIS)
+  O site fica num repositório do GitHub e é publicado pelo GitHub Pages.
+  Configuração (feita uma vez só): no repositório, Settings > Pages >
+  "Deploy from a branch" > branch "main", pasta "/ (root)" > Save.
 
-COMO PUBLICAR (NETLIFY, GRÁTIS)
-  1. Entre em https://app.netlify.com/drop
-  2. Arraste a pasta "site" inteira para a página.
-  3. Pronto: o Netlify cria um endereço. Crie uma conta para mudar o nome
-     (ex.: tempodeliberdade.netlify.app) e para atualizar o site depois
-     (é só arrastar a pasta de novo).
+COMO ATUALIZAR O SITE
+  Depois de mudar qualquer arquivo, rode dentro da pasta do site:
+    git add -A
+    git commit -m "Descreva aqui o que mudou"
+    git push
+  Em 1 ou 2 minutos o GitHub Pages publica a nova versão.
+  Também dá para editar direto no site do GitHub: abra o arquivo, clique
+  no lápis, faça a mudança e clique em "Commit changes".
