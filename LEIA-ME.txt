@@ -1,0 +1,36 @@
+GRUPO JOVEM TEMPO DE LIBERDADE · SITE
+
+O QUE TEM NA PASTA
+  index.html  -> os textos do site
+  style.css   -> cores e visual (as cores ficam no topo do arquivo)
+  script.js   -> palavras do título animado, lista de fotos e animações
+  imagens/    -> logos
+  imagens/galeria/ -> fotos da galeria
+
+COMO COLOCAR AS FOTOS NA GALERIA
+  1. Salve as fotos em .jpg dentro de imagens/galeria
+     (nomes simples, sem espaço nem acento: foto1.jpg, foto2.jpg...)
+  2. Abra o script.js e, na lista FOTOS, escreva o nome de cada arquivo
+     e uma legenda curta.
+  Enquanto uma foto não for colocada, aparece um quadro azul com uma cruz.
+
+COMO TROCAR AS PALAVRAS DO TÍTULO ("Tempo de ...")
+  Abra o script.js e edite a lista PALAVRAS, logo no começo.
+
+COMO MUDAR UM TEXTO
+  Abra o index.html, procure (Ctrl+F) o texto que quer mudar e escreva por cima.
+
+COMO PUBLICAR (VERCEL, GRÁTIS)
+  O arquivo vercel.json já deixa o site pronto para a Vercel.
+  1. Crie uma conta em https://vercel.com (pode entrar com o GitHub).
+  2. Envie a pasta "site" para um repositório no GitHub.
+  3. Na Vercel: Add New > Project > escolha o repositório > Deploy.
+     Não é preciso configurar nada: deixe "Framework Preset" como "Other".
+  4. Cada vez que você enviar uma mudança para o GitHub, o site atualiza sozinho.
+
+COMO PUBLICAR (NETLIFY, GRÁTIS)
+  1. Entre em https://app.netlify.com/drop
+  2. Arraste a pasta "site" inteira para a página.
+  3. Pronto: o Netlify cria um endereço. Crie uma conta para mudar o nome
+     (ex.: tempodeliberdade.netlify.app) e para atualizar o site depois
+     (é só arrastar a pasta de novo).
