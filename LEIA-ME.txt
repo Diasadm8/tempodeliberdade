@@ -9,10 +9,12 @@ O QUE TEM NA PASTA
 
 COMO COLOCAR AS FOTOS NA GALERIA
   1. Salve as fotos em .jpg dentro de imagens/galeria
-     (nomes simples, sem espaço nem acento: foto1.jpg, foto2.jpg...)
+     (nomes simples, sem espaço nem acento: foto43.jpg, foto44.jpg...)
+     Prefira fotos com no máximo 1400 pixels de largura (~300 KB).
   2. Abra o script.js e, na lista FOTOS, escreva o nome de cada arquivo
-     e uma legenda curta.
-  Enquanto uma foto não for colocada, aparece um quadro azul com uma cruz.
+     e uma legenda curta. A ordem da lista é a ordem no site.
+  Para tirar uma foto, apague a linha dela da lista.
+  O site mostra 12 fotos por vez; para mudar, altere FOTOS_POR_VEZ.
 
 COMO TROCAR AS PALAVRAS DO TÍTULO ("Tempo de ...")
   Abra o script.js e edite a lista PALAVRAS, logo no começo.

@@ -10,14 +10,54 @@ const PALAVRAS = ['fé', 'louvor', 'adoração', 'amizade', 'missão', 'liberdad
 // 2) FOTOS da galeria
 //    Coloque as fotos na pasta imagens/galeria e escreva o nome do arquivo aqui.
 //    Use fotos .jpg de até ~500 KB para o site ficar rápido.
+//    A ordem da lista é a ordem em que as fotos aparecem no site.
 const FOTOS = [
-  { arquivo: 'foto1.jpg', legenda: 'Encontro de sábado' },
-  { arquivo: 'foto2.jpg', legenda: 'Louvor' },
-  { arquivo: 'foto3.jpg', legenda: 'Adoração' },
-  { arquivo: 'foto4.jpg', legenda: 'Nossa juventude' },
-  { arquivo: 'foto5.jpg', legenda: 'Retiro' },
-  { arquivo: 'foto6.jpg', legenda: 'Missão' },
+  { arquivo: 'foto01.jpg', legenda: 'Adoração ao Santíssimo' },
+  { arquivo: 'foto02.jpg', legenda: 'Casa cheia' },
+  { arquivo: 'foto03.jpg', legenda: 'Pregação' },
+  { arquivo: 'foto04.jpg', legenda: 'Tapete de Corpus Christi' },
+  { arquivo: 'foto05.jpg', legenda: 'Intercessão' },
+  { arquivo: 'foto06.jpg', legenda: 'Alegria de ser jovem' },
+  { arquivo: 'foto07.jpg', legenda: 'Juventude no Santuário' },
+  { arquivo: 'foto08.jpg', legenda: 'Louvor' },
+  { arquivo: 'foto09.jpg', legenda: 'Tempo de Liberdade' },
+  { arquivo: 'foto10.jpg', legenda: 'Momento de oração' },
+  { arquivo: 'foto11.jpg', legenda: 'Animação' },
+  { arquivo: 'foto12.jpg', legenda: 'Missa com a juventude' },
+  { arquivo: 'foto13.jpg', legenda: 'Mãos levantadas' },
+  { arquivo: 'foto14.jpg', legenda: 'Acolhida' },
+  { arquivo: 'foto15.jpg', legenda: 'Encontro de sábado' },
+  { arquivo: 'foto16.jpg', legenda: 'Oração pelos irmãos' },
+  { arquivo: 'foto17.jpg', legenda: 'Arraiá do grupo' },
+  { arquivo: 'foto18.jpg', legenda: 'Pregação' },
+  { arquivo: 'foto19.jpg', legenda: 'Dança' },
+  { arquivo: 'foto20.jpg', legenda: 'Grande encontro' },
+  { arquivo: 'foto21.jpg', legenda: 'Escuta da Palavra' },
+  { arquivo: 'foto22.jpg', legenda: 'Diante da Cruz da Trindade Santa' },
+  { arquivo: 'foto23.jpg', legenda: 'Juventude no Santuário' },
+  { arquivo: 'foto24.jpg', legenda: 'Oração' },
+  { arquivo: 'foto25.jpg', legenda: 'Celebração' },
+  { arquivo: 'foto26.jpg', legenda: 'Ministério de Música' },
+  { arquivo: 'foto27.jpg', legenda: 'Encontro' },
+  { arquivo: 'foto28.jpg', legenda: 'Amizade' },
+  { arquivo: 'foto29.jpg', legenda: 'Juntos' },
+  { arquivo: 'foto30.jpg', legenda: 'Louvor e adoração' },
+  { arquivo: 'foto31.jpg', legenda: 'No Santuário' },
+  { arquivo: 'foto32.jpg', legenda: 'Juntos na missão' },
+  { arquivo: 'foto33.jpg', legenda: 'Alegria de servir' },
+  { arquivo: 'foto34.jpg', legenda: 'Família reunida' },
+  { arquivo: 'foto35.jpg', legenda: 'Noite de celebração' },
+  { arquivo: 'foto36.jpg', legenda: 'Amigos na fé' },
+  { arquivo: 'foto37.jpg', legenda: 'Família Tempo de Liberdade' },
+  { arquivo: 'foto38.jpg', legenda: 'Noite de louvor' },
+  { arquivo: 'foto39.jpg', legenda: 'Nossa juventude' },
+  { arquivo: 'foto40.jpg', legenda: 'Tempo de Liberdade' },
+  { arquivo: 'foto41.jpg', legenda: 'Encontro' },
+  { arquivo: 'foto42.jpg', legenda: 'Louvor' },
 ];
+
+// Quantas fotos aparecem antes do botão "Ver mais fotos"
+const FOTOS_POR_VEZ = 12;
 
 /* ---------------------------------------------------------
    Daqui para baixo não é preciso mexer.
@@ -111,32 +151,71 @@ function atualizarContagem() {
 atualizarContagem();
 setInterval(atualizarContagem, 1000);
 
-// Galeria: monta as fotos e abre em tela cheia ao clicar
+// Galeria: monta as fotos, mostra aos poucos e abre em tela cheia ao clicar
 const fotos = document.getElementById('fotos');
+const verMais = document.getElementById('ver-mais');
 const telaCheia = document.getElementById('tela-cheia');
 const telaCheiaImg = document.getElementById('tela-cheia-img');
-FOTOS.forEach(f => {
+const telaCheiaLegenda = document.getElementById('tela-cheia-legenda');
+let mostrando = 0;
+let atual = 0;
+
+FOTOS.forEach((f, i) => {
   const fig = document.createElement('figure');
-  fig.className = 'foto revelar';
+  fig.className = 'foto';
+  fig.hidden = true;
   const img = document.createElement('img');
   img.src = 'imagens/galeria/' + f.arquivo;
   img.alt = f.legenda;
   img.loading = 'lazy';
-  img.onerror = () => { img.remove(); fig.classList.add('vazia'); }; // foto ainda não colocada
+  img.onerror = () => fig.remove(); // se o arquivo não existir, a foto simplesmente não aparece
   const legenda = document.createElement('figcaption');
   legenda.textContent = f.legenda;
   fig.append(img, legenda);
-  fig.addEventListener('click', () => {
-    if (fig.classList.contains('vazia')) return;
-    telaCheiaImg.src = img.src;
-    telaCheiaImg.alt = f.legenda;
-    telaCheia.hidden = false;
-  });
+  fig.addEventListener('click', () => abrirFoto(i));
   fotos.append(fig);
-  observador.observe(fig);
 });
-telaCheia.addEventListener('click', () => { telaCheia.hidden = true; });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') telaCheia.hidden = true; });
+
+function mostrarMais() {
+  mostrando = Math.min(mostrando + FOTOS_POR_VEZ, FOTOS.length);
+  [...fotos.children].forEach((fig, i) => { if (i < mostrando) fig.hidden = false; });
+  const restantes = FOTOS.length - mostrando;
+  verMais.hidden = restantes <= 0;
+  verMais.textContent = `Ver mais fotos (${restantes})`;
+}
+verMais.addEventListener('click', mostrarMais);
+mostrarMais();
+
+function abrirFoto(i) {
+  atual = (i + FOTOS.length) % FOTOS.length;
+  telaCheiaImg.src = 'imagens/galeria/' + FOTOS[atual].arquivo;
+  telaCheiaImg.alt = FOTOS[atual].legenda;
+  telaCheiaLegenda.textContent = `${FOTOS[atual].legenda} · ${atual + 1} de ${FOTOS.length}`;
+  telaCheia.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+function fecharFoto() {
+  telaCheia.hidden = true;
+  document.body.style.overflow = '';
+}
+document.getElementById('tela-cheia-anterior').addEventListener('click', e => { e.stopPropagation(); abrirFoto(atual - 1); });
+document.getElementById('tela-cheia-proxima').addEventListener('click', e => { e.stopPropagation(); abrirFoto(atual + 1); });
+telaCheia.addEventListener('click', e => { if (e.target === telaCheia || e.target.id === 'tela-cheia-fechar') fecharFoto(); });
+document.addEventListener('keydown', e => {
+  if (telaCheia.hidden) return;
+  if (e.key === 'Escape') fecharFoto();
+  if (e.key === 'ArrowLeft') abrirFoto(atual - 1);
+  if (e.key === 'ArrowRight') abrirFoto(atual + 1);
+});
+// No celular: arrastar o dedo para o lado troca de foto
+let toqueX = null;
+telaCheia.addEventListener('touchstart', e => { toqueX = e.touches[0].clientX; }, { passive: true });
+telaCheia.addEventListener('touchend', e => {
+  if (toqueX === null) return;
+  const dx = e.changedTouches[0].clientX - toqueX;
+  if (Math.abs(dx) > 50) abrirFoto(atual + (dx < 0 ? 1 : -1));
+  toqueX = null;
+});
 
 // Brasas subindo na seção da sarça ardente
 const canvas = document.getElementById('brasas');

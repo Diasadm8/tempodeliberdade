@@ -484,6 +484,7 @@
       </div>
       <!-- As fotos são colocadas automaticamente pelo script.js (lista FOTOS) -->
       <div class="fotos" id="fotos"></div>
+      <button class="botao ver-mais" id="ver-mais" type="button">Ver mais fotos</button>
     </section>
 
     <!-- ===================== FINAL ===================== -->
@@ -501,7 +502,13 @@
 
   <!-- Janela para ver a foto em tela cheia -->
   <div class="tela-cheia" id="tela-cheia" hidden>
-    <img id="tela-cheia-img" alt="">
+    <button class="tc-botao tc-fechar" id="tela-cheia-fechar" type="button" aria-label="Fechar">✕</button>
+    <button class="tc-botao tc-anterior" id="tela-cheia-anterior" type="button" aria-label="Foto anterior">‹</button>
+    <figure>
+      <img id="tela-cheia-img" alt="">
+      <figcaption id="tela-cheia-legenda"></figcaption>
+    </figure>
+    <button class="tc-botao tc-proxima" id="tela-cheia-proxima" type="button" aria-label="Próxima foto">›</button>
   </div>
 
   <script src="script.js"></script>
