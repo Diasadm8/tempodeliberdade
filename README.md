@@ -2,6 +2,8 @@
 
 ## 📁 O QUE TEM NA PASTA
 
+## Link do site: https://diasadm8.github.io/tempodeliberdade/
+
 * index.html → textos e estrutura do site.
 * style.css → cores e visual do site (as cores ficam no topo do arquivo).
 * script.js → palavras do título animado, lista de fotos e animações.
